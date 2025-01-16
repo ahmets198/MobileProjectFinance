@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="primary_light">#BBDEFB</color>
+    <color name="accent">#FF4081</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#BDBDBD</color>
+
+    <!-- Button Colors -->
+    <color name="button_normal">#2196F3</color>
+    <color name="button_pressed">#1976D2</color>
+    <color name="button_selected">#999999</color>
+    <color name="button_disabled">#BDBDBD</color>
+
+    <!-- Financial Colors -->
+    <color name="income_green">#4CAF50</color>
+    <color name="expense_red">#F44336</color>
+    <color name="savings_blue">#2196F3</color>
+    <color name="goal_purple">#9C27B0</color>
+
+    <!-- Background Colors -->
+    <color name="background_main">#FFFFFF</color>
+    <color name="background_card">#FFFFFF</color>
+    <color name="background_disabled">#F5F5F5</color>
+
+    <!-- Divider Colors -->
+    <color name="divider">#BDBDBD</color>
+    <color name="divider_light">#EEEEEE</color>
+
+    <!-- Chart Colors -->
+    <color name="chart_color_1">#2196F3</color>
+    <color name="chart_color_2">#4CAF50</color>
+    <color name="chart_color_3">#FFC107</color>
+    <color name="chart_color_4">#9C27B0</color>
+    <color name="chart_color_5">#F44336</color>
+</resources>

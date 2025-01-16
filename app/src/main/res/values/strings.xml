@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Finance Tracker</string>
+
+    <!-- Navigation -->
+    <string name="nav_assets">Assets</string>
+    <string name="nav_income">Income</string>
+    <string name="nav_expenses">Expenses</string>
+    <string name="nav_savings">Savings</string>
+    <string name="nav_goals">Goals</string>
+
+    <!-- Common -->
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="amount">Amount</string>
+    <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="type">Type</string>
+
+    <!-- Assets -->
+    <string name="asset_type">Asset Type</string>
+    <string name="asset_amount">Asset Amount</string>
+    <string name="asset_worth">Worth</string>
+    <string name="add_asset">Add Asset</string>
+
+    <string name="total_wealth_format">Total Wealth\n$%.2f</string>
+    <string name="label_total_wealth">Total Wealth</string>
+
+
+    <!-- Income -->
+    <string name="income_source">Income Source</string>
+    <string name="income_amount">Income Amount</string>
+    <string name="add_income">Add Income</string>
+    <string name="total_income">Total Income</string>
+
+    <!-- Expenses -->
+    <string name="expense_category">Expense Category</string>
+    <string name="expense_amount">Expense Amount</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="total_expenses">Total Expenses</string>
+
+    <!-- Savings -->
+    <string name="saving_type">Saving Type</string>
+    <string name="saving_amount">Saving Amount</string>
+    <string name="add_saving">Add Saving</string>
+    <string name="total_savings">Total Savings</string>
+    <string name="return_rate">Return Rate</string>
+
+    <!-- Goals -->
+    <string name="goal_description">Goal Description</string>
+    <string name="goal_amount">Target Amount</string>
+    <string name="current_amount">Current Amount</string>
+    <string name="add_goal">Add Goal</string>
+    <string name="goal_progress">Progress</string>
+    <string name="goal_deadline">Deadline</string>
+
+    <!-- Messages -->
+    <string name="msg_add_success">Successfully added</string>
+    <string name="msg_update_success">Successfully updated</string>
+    <string name="msg_delete_success">Successfully deleted</string>
+    <string name="msg_error">An error occurred</string>
+    <string name="msg_enter_amount">Please enter an amount</string>
+    <string name="msg_enter_description">Please enter a description</string>
+    <string name="msg_invalid_amount">Please enter a valid amount</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

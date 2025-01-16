@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Logout"
+        android:textSize="16sp"
+        android:backgroundTint="@color/button_selected"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.Button" />
+
+    <!-- Navigation Buttons Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <Button
+            android:id="@+id/btnAssets"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:text="ASSETS"
+            android:textSize="15sp"
+            android:padding="0dp"
+            android:backgroundTint="@color/button_normal"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <Button
+            android:id="@+id/btnIncome"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:text="INCOME"
+            android:textSize="15sp"
+            android:padding="0dp"
+            android:backgroundTint="@color/button_normal"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <Button
+            android:id="@+id/btnExpenses"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:text="EXPENSE"
+            android:textSize="15sp"
+            android:padding="0dp"
+            android:backgroundTint="@color/button_normal"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <Button
+            android:id="@+id/btnSaving"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:text="SAVING"
+            android:textSize="15sp"
+            android:padding="0dp"
+            android:backgroundTint="@color/button_normal"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <Button
+            android:id="@+id/btnGoal"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:text="GOAL"
+            android:textSize="15sp"
+            android:padding="0dp"
+            android:backgroundTint="@color/button_normal"
+            style="@style/Widget.MaterialComponents.Button" />
+
+    </LinearLayout>
+
+    <!-- Fragment Container -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
