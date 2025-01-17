@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
             return;
         }
 
-        // Basit bir sabit kullanıcı adı ve şifre kontrolü
+        // Simple user name and password to confirm log in
         if (username.equals("admin") && password.equals("1234")) {
             Toast.makeText(getContext(), "Login successful!", Toast.LENGTH_SHORT).show();
             ((MainActivity) requireActivity()).onLoginSuccess();

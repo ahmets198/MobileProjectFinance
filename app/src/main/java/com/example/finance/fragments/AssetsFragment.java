@@ -97,7 +97,7 @@ public class AssetsFragment extends Fragment implements BitcoinPriceManager.Bitc
     }
 
 
-    private double calculateTotalWealth() {
+    public double calculateTotalWealth() {
 
         double total = 0;
 
@@ -153,7 +153,7 @@ public class AssetsFragment extends Fragment implements BitcoinPriceManager.Bitc
         }
     }
 
-    private Asset findAssetByType(String type) {
+    public Asset findAssetByType(String type) {
         for (Asset asset : assetList) {
             if (asset.getType().equals(type)) {
                 return asset;
@@ -162,7 +162,7 @@ public class AssetsFragment extends Fragment implements BitcoinPriceManager.Bitc
         return null;
     }
 
-    private double calculateWorth(String type, double amount) {
+    public double calculateWorth(String type, double amount) {
         switch (type) {
             case "Cash":
                 return amount;

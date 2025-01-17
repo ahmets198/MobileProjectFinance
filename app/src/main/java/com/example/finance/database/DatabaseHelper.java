@@ -22,9 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
     private static final String DATABASE_NAME = "FinanceTracker.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_EXPENSES = "expenses";
-
-    private static final String COLUMN_CATEGORY = "category";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -198,16 +195,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return total;
     }
 
-    public void deleteAsset(long id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        try {
-            db.delete(DatabaseContract.AssetEntry.TABLE_NAME,
-                    DatabaseContract.AssetEntry._ID + " = ?",
-                    new String[]{String.valueOf(id)});
-        } catch (Exception e) {
-            Log.e(TAG, "Error deleting asset", e);
-        }
-    }
 
     // Income Methods
     public long addIncome(Income income) {
@@ -281,16 +268,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return total;
     }
 
-    public void deleteIncome(long id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        try {
-            db.delete(DatabaseContract.IncomeEntry.TABLE_NAME,
-                    DatabaseContract.IncomeEntry._ID + " = ?",
-                    new String[]{String.valueOf(id)});
-        } catch (Exception e) {
-            Log.e(TAG, "Error deleting income", e);
-        }
-    }
 
     public double getTotalIncome() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -385,43 +362,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return total;
     }
 
-    
 
-    // Saving Methods
-    public long addOrUpdateSaving(Saving saving) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DatabaseContract.SavingEntry.COLUMN_TYPE, saving.getType());
-        values.put(DatabaseContract.SavingEntry.COLUMN_AMOUNT, saving.getAmount());
-        values.put(DatabaseContract.SavingEntry.COLUMN_RETURN_RATE, saving.getReturnRate());
-        values.put(DatabaseContract.SavingEntry.COLUMN_START_DATE, saving.getStartDate());
-        values.put(DatabaseContract.SavingEntry.COLUMN_TARGET_DATE, saving.getTargetDate());
-        values.put(DatabaseContract.SavingEntry.COLUMN_TARGET_AMOUNT, saving.getTargetAmount());
 
-        long id = -1;
-        try {
-            Cursor cursor = db.query(
-                    DatabaseContract.SavingEntry.TABLE_NAME,
-                    null,
-                    DatabaseContract.SavingEntry.COLUMN_TYPE + " = ?",
-                    new String[]{saving.getType()},
-                    null, null, null
-            );
-
-            if (cursor.moveToFirst()) {
-                id = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseContract.SavingEntry._ID));
-                db.update(DatabaseContract.SavingEntry.TABLE_NAME, values,
-                        DatabaseContract.SavingEntry._ID + " = ?",
-                        new String[]{String.valueOf(id)});
-            } else {
-                id = db.insert(DatabaseContract.SavingEntry.TABLE_NAME, null, values);
-            }
-            cursor.close();
-        } catch (Exception e) {
-            Log.e(TAG, "Error adding/updating saving", e);
-        }
-        return id;
-    }
 
     public List<Saving> getAllSavings() {
         List<Saving> savingList = new ArrayList<>();
@@ -486,87 +428,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public List<Goal> getAllGoals() {
-        List<Goal> goalList = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
 
-        try {
-            Cursor cursor = db.query(
-                    DatabaseContract.GoalEntry.TABLE_NAME,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    DatabaseContract.GoalEntry.COLUMN_PRIORITY + " DESC"
-            );
-
-            if (cursor.moveToFirst()) {
-                do {
-                    Goal goal = new Goal(
-                            cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseContract.GoalEntry._ID)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.GoalEntry.COLUMN_DESCRIPTION)),
-                            cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseContract.GoalEntry.COLUMN_TARGET_AMOUNT)),
-                            cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseContract.GoalEntry.COLUMN_CURRENT_AMOUNT)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.GoalEntry.COLUMN_DEADLINE)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.GoalEntry.COLUMN_CATEGORY)),
-                            cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.GoalEntry.COLUMN_PRIORITY))
-                    );
-                    goalList.add(goal);
-                } while (cursor.moveToNext());
-            }
-            cursor.close();
-        } catch (Exception e) {
-            Log.e(TAG, "Error getting goals", e);
-        }
-        return goalList;
-    }
-
-    // Utility Methods
-    public Map<String, Double> getMonthlyExpenseSummary(String yearMonth) {
-        Map<String, Double> summary = new HashMap<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        try {
-            String query = "SELECT " + DatabaseContract.ExpenseEntry.COLUMN_CATEGORY +
-                    ", SUM(" + DatabaseContract.ExpenseEntry.COLUMN_AMOUNT + ") as total" +
-                    " FROM " + DatabaseContract.ExpenseEntry.TABLE_NAME +
-                    " WHERE strftime('%Y-%m', " + DatabaseContract.ExpenseEntry.COLUMN_DATE + ") = ?" +
-                    " GROUP BY " + DatabaseContract.ExpenseEntry.COLUMN_CATEGORY;
-
-            Cursor cursor = db.rawQuery(query, new String[]{yearMonth});
-            if (cursor.moveToFirst()) {
-                do {
-                    String category = cursor.getString(0);
-                    double total = cursor.getDouble(1);
-                    summary.put(category, total);
-                } while (cursor.moveToNext());
-            }
-            cursor.close();
-        } catch (Exception e) {
-            Log.e(TAG, "Error getting monthly expense summary", e);
-        }
-        return summary;
-    }
-
-    public double getTotalAssetWorth() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        double total = 0;
-
-        try {
-            Cursor cursor = db.rawQuery("SELECT SUM(" +
-                    DatabaseContract.AssetEntry.COLUMN_WORTH + ") FROM " +
-                    DatabaseContract.AssetEntry.TABLE_NAME, null);
-
-            if (cursor.moveToFirst()) {
-                total = cursor.getDouble(0);
-            }
-            cursor.close();
-        } catch (Exception e) {
-            Log.e(TAG, "Error calculating total asset worth", e);
-        }
-        return total;
-    }
 
     public void clearAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -633,28 +495,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return goal;
     }
-
-
-    public double getTotalSavings() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        double total = 0;
-
-        try {
-            String query = "SELECT SUM(" + DatabaseContract.SavingEntry.COLUMN_AMOUNT + ") as Total FROM " +
-                    DatabaseContract.SavingEntry.TABLE_NAME;
-
-            Cursor cursor = db.rawQuery(query, null);
-            if (cursor.moveToFirst()) {
-                total = cursor.getDouble(0);
-            }
-            cursor.close();
-        } catch (Exception e) {
-            Log.e(TAG, "Error calculating total savings", e);
-        }
-        return total;
-    }
-
-
 
 
 }

@@ -22,22 +22,22 @@ public class MainActivity extends AppCompatActivity {
 
         initializeViews();
 
-        // İlk olarak LoginFragment'i yükle
+        // first load login screen
         loadFragment(new LoginFragment());
 
-        // Düğmeleri gizle
+        // this is for hiding buttons
         toggleMenuButtons(false);
 
         setupButtonSelection();
     }
 
     private void initializeViews() {
-        btnAssets = findViewById(R.id.btnAssets);
+        btnAssets = findViewById(R.id.btnAssets); // our pages we used in app
         btnIncome = findViewById(R.id.btnIncome);
         btnExpenses = findViewById(R.id.btnExpenses);
         btnSaving = findViewById(R.id.btnSaving);
         btnGoal = findViewById(R.id.btnGoal);
-        btnLogout = findViewById(R.id.btnLogout); // Logout butonu
+        btnLogout = findViewById(R.id.btnLogout); // Logout button
     }
 
     private void setupButtonSelection() {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         for (Button button : buttons) {
             button.setOnClickListener(v -> {
                 if (!isLoggedIn) {
-                    // Kullanıcı giriş yapmadıysa Login ekranına yönlendir
+                    // If user didn`t login yet. Shows login screen
                     loadFragment(new LoginFragment());
                     return;
                 }
@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        // Logout butonuna tıklama işlemi
+        // Logout button click
         btnLogout.setOnClickListener(v -> onLogout());
     }
 
-    private void handleNavigation(String buttonText) {
+    private void handleNavigation(String buttonText) {   // all chosen fragment cases in our app
         Fragment selectedFragment = null;
 
         switch (buttonText.toUpperCase()) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        // LoginFragment'ten başarılı giriş sonrası çağrılır
+        // ıf log in is succes we call this function
         isLoggedIn = true;
 
         // Menü düğmelerini göster
@@ -101,13 +101,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onLogout() {
-        // Giriş yapmamış gibi ayarlama
+        // this is for logour function
         isLoggedIn = false;
 
-        // Menü düğmelerini gizle
+        // hide menu button
         toggleMenuButtons(false);
 
-        // LoginFragment'i yükle
+        // after logout load login screen again
         loadFragment(new LoginFragment());
     }
 
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         btnExpenses.setVisibility(visibility);
         btnSaving.setVisibility(visibility);
         btnGoal.setVisibility(visibility);
-        btnLogout.setVisibility(visibility); // Logout butonunu da kontrol et
+        btnLogout.setVisibility(visibility); // our menu buttons
     }
 
     private void loadFragment(Fragment fragment) {
