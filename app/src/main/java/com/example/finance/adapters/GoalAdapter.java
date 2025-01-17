@@ -1,4 +1,4 @@
-package com.example.finance.adapters;
+package com.example.finance.adapters;// Ahmet Sazan worked on this page
 
 import android.view.LayoutInflater;
 import android.view.View;

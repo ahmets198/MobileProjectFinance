@@ -1,5 +1,5 @@
 // BitcoinPriceManager.java
-package com.example.finance.utils;
+package com.example.finance.utils; // Murat Görkem Kahya worked on this page
 
 import android.os.Handler;
 import android.os.Looper;

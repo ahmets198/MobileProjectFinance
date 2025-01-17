@@ -1,4 +1,4 @@
-package com.example.finance.models;
+package com.example.finance.models; // Ahmet Sazan worked on this page
 
 public class Goal {
     private long id;

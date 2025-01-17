@@ -1,5 +1,5 @@
 // BitcoinPriceResponse.java
-package com.example.finance.api;
+package com.example.finance.api;  // Murat Görkem Kahya worked on this page
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package com.example.finance.models;
+package com.example.finance.models; // Murat Görkem Kahya worked on this page
 
 public class Asset {
     private long id;

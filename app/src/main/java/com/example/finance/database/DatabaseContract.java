@@ -1,4 +1,4 @@
-package com.example.finance.database;
+package com.example.finance.database;  // Ahmet SAZAN and Murat Görkem Kahya worked together for this page
 
 import android.provider.BaseColumns;
 
